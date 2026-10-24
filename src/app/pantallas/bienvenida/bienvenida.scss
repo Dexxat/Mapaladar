@@ -1,0 +1,39 @@
+.bienvenida {
+  min-height: 100%;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 48px; padding: 48px 16px;
+}
+
+.presentacion {
+  flex: 1 1 320px; max-width: 420px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+}
+
+h1 { margin: 0; padding-top: 133px; font: 700 clamp(44px, 8vw, 64px) / 1 var(--pixel); }
+
+// El logo se ancla a la "l" para quedar centrado justo encima de ella.
+.ele { position: relative; }
+.logo { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.bajada { margin: 0; font-size: 20px; color: var(--gris); }
+.desfile { display: flex; gap: 12px; margin-top: 12px; }
+
+.ingreso {
+  flex: 1 1 320px; max-width: 380px;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 28px; border: var(--borde); border-radius: 20px;
+  background: var(--crema); box-shadow: 0 6px 0 var(--tinta);
+}
+
+h2 { margin: 0 0 8px; font: 700 26px var(--pixel); }
+label { font-weight: 700; font-size: 14px; margin-top: 8px; }
+
+input {
+  height: 48px; padding: 0 14px; border: 2px solid var(--tinta); border-radius: 12px;
+  background: #fff; font: 400 16px var(--fuente); color: var(--tinta);
+  &[aria-invalid='true'] { border-color: #a8321f; }
+}
+
+.campo-error, .error { color: #a8321f; font-size: 13px; }
+.error { margin: 4px 0 0; font-weight: 700; }
+.boton { margin-top: 16px; }
+.nota { margin: 8px 0 0; font-size: 12px; color: var(--gris); }

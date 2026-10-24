@@ -1,0 +1,46 @@
+.tarjeta {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid var(--linea);
+  border-radius: var(--radio);
+  background: var(--crema);
+
+  &.activa { border: var(--borde); box-shadow: 0 4px 0 var(--tinta); }
+}
+
+.cabecera {
+  display: flex; gap: 12px; align-items: center; padding: 0; padding-right: 44px;
+  border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+
+.icono {
+  width: 60px; height: 60px; flex: none; display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--tinta); border-radius: 12px; background: var(--papel);
+}
+
+.datos { display: grid; gap: 3px; min-width: 0; }
+strong { font-size: 16px; }
+.sub { font-size: 13px; color: var(--gris); }
+
+.estado {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;
+  i { width: 9px; height: 9px; border-radius: 50%; background: var(--gris); }
+  &[data-estado='abierto'] { color: var(--verde); i { background: var(--verde); } }
+  &[data-estado='cerrado'] { color: #a8321f; i { background: #a8321f; } }
+  &[data-estado='sin-horario'] { color: var(--gris); font-weight: 500; }
+}
+
+.fav {
+  position: absolute; top: 8px; right: 8px; width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 10px; background: none; cursor: pointer;
+  path { fill: none; stroke: var(--tinta); stroke-width: 2; }
+  &[aria-pressed='true'] path { fill: #d62f2f; stroke: #8c1c1c; }
+}
+
+.acciones {
+  display: flex; gap: 8px;
+  .boton { flex: 1; }
+}

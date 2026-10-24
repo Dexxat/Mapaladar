@@ -1,0 +1,39 @@
+<main class="bienvenida">
+  <section class="presentacion">
+    <h1>Mapa<span class="ele">l<app-sprite class="logo" [def]="logo" [tam]="125" /></span>adar</h1>
+    <p class="bajada">Recorré Bella Vista, antojate y pedí.</p>
+    <div class="desfile" aria-hidden="true">
+      @for (r of rubros; track r.nombre) {
+        <app-sprite [def]="r.sprite" [tam]="56" />
+      }
+      <app-sprite [def]="corazon" [tam]="56" />
+    </div>
+  </section>
+
+  <form class="ingreso" [formGroup]="form" (ngSubmit)="ingresar()" novalidate>
+    <h2>Ingresá</h2>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" autocomplete="email" placeholder="vos@ejemplo.com"
+      [attr.aria-invalid]="form.controls.email.touched && form.controls.email.invalid" />
+    @if (form.controls.email.touched && form.controls.email.invalid) {
+      <small class="campo-error">Escribí un email válido.</small>
+    }
+
+    <label for="clave">Contraseña</label>
+    <input id="clave" type="password" formControlName="clave" autocomplete="current-password"
+      [attr.aria-invalid]="form.controls.clave.touched && form.controls.clave.invalid" />
+    @if (form.controls.clave.touched && form.controls.clave.invalid) {
+      <small class="campo-error">Usá al menos 4 caracteres.</small>
+    }
+
+    @if (error()) {
+      <p class="error" role="alert">{{ error() }}</p>
+    }
+
+    <button class="boton primario" type="submit" [disabled]="enviando()">
+      {{ enviando() ? 'Ingresando…' : 'Ingresar' }}
+    </button>
+    <p class="nota">Versión de prueba: cualquier email y contraseña de 4 caracteres te deja entrar.</p>
+  </form>
+</main>

@@ -1,0 +1,63 @@
+:root {
+  --tinta: #221c16;
+  --crema: #fffcf5;
+  --papel: #fbf6ec;
+  --linea: #e2d2b2;
+  --gris: #6b5e50;
+  --naranja: #d9822b;
+  --verde: #2e8540;
+  --foco: #2d7a82;
+  --fuente: 'DM Sans', system-ui, sans-serif;
+  --pixel: 'Pixelify Sans', ui-monospace, monospace;
+  --radio: 14px;
+  --borde: 3px solid var(--tinta);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: var(--fuente); color: var(--tinta); background: var(--papel); }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+
+/* Botones compartidos */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 0 18px; border: 2px solid var(--tinta); border-radius: 12px;
+  background: var(--crema); color: var(--tinta); font: 700 15px var(--fuente);
+  text-decoration: none; cursor: pointer;
+  &.primario { background: var(--tinta); color: var(--crema); }
+  &.acento { background: var(--naranja); }
+  &:disabled { opacity: .5; cursor: not-allowed; }
+}
+
+.chip {
+  height: 40px; padding: 0 14px; border: 2px solid var(--tinta); border-radius: 999px;
+  background: var(--crema); color: var(--tinta); font: 500 14px var(--fuente); cursor: pointer;
+  &[aria-pressed='true'] { background: var(--tinta); color: var(--crema); font-weight: 700; }
+}
+
+/* Sprite de Piskel: tira horizontal de cuadros cuadrados */
+.sprite {
+  --tam: 48px;
+  display: inline-block; flex: none; width: var(--tam); height: var(--tam);
+  background: var(--img) 0 0 / calc(var(--cuadros) * var(--tam)) var(--tam) no-repeat;
+  image-rendering: pixelated;
+  animation: sprite var(--dur) steps(var(--cuadros)) infinite;
+}
+@keyframes sprite { to { background-position-x: calc(var(--cuadros) * var(--tam) * -1); } }
+
+/* Pin del mapa (lo arma Leaflet como HTML) */
+.pin {
+  width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+  border: var(--borde); border-radius: 16px; background: var(--crema);
+  box-shadow: 0 4px 0 var(--color), 0 7px 0 var(--tinta);
+  transition: transform .15s;
+  &.activo { transform: translateY(-6px) scale(1.12); }
+}
+.pin-boton { padding: 0; border: 0; background: none; cursor: pointer; }
+.pin-yo { width: 18px; height: 18px; border-radius: 50%; background: #2a6fdb; border: 3px solid #fff; box-shadow: 0 0 0 2px #2a6fdb; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sprite { animation: none; }
+  .pin { transition: none; }
+}
